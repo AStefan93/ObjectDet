@@ -26,7 +26,7 @@ for index = 1:length(cellImages)
         
         % take name of the folder
         newImFolder = strrep(relativePath{index},'data/images/','');
-%         folderPath = fullfile(parentPath,'cut_images',newImFolder);
+
         folderName{index} = strtok(newImFolder,'/');
         
         %create folders for every cut image
@@ -38,7 +38,7 @@ for index = 1:length(cellImages)
             mkdir(newRelPath,folderName{index});
         end
         % take name of the cut image and convert to .png
-%         cutImName = strrep(newImFolder,folderName{index},'');
+
         cutImName = newImFolder(length(folderName{index})+1:length(newImFolder));
         cutImName = strrep(cutImName,'.ppm','.png');
         

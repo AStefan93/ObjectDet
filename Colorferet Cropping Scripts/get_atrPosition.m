@@ -41,8 +41,8 @@ for index = 1:length(filePath)
         valLeftEye_x = thisElement.getAttribute('x');
         valLeftEye_y = thisElement.getAttribute('y');
         
-        fieldx = 'valLeftEye_x';
-        fieldy = 'valLeftEye_y';
+        fieldx = 'x';
+        fieldy = 'y';
         
         LeftEye{index_le} = struct(fieldx, str2num(valLeftEye_x), fieldy, str2num(valLeftEye_y));
         index_le = index_le + 1;
