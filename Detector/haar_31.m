@@ -1,5 +1,5 @@
 % function x=haar_3(n,m,J,rnd,n_new,m_new)
-function x=haar_31(n,m,J,rnd)
+function x=haar_31(n,m,J,rnd,ls,cs)
 N=round(n/20);
 M=round (m/20);
 % n_new=15;
@@ -10,8 +10,10 @@ M=round (m/20);
     % [startingRow, startingColumn, endingRow, endingColumn]
     n_new=fix(N*rnd(1,3));
     m_new=fix(M*rnd(1,4));
-    sR=fix(1+(n-2*n_new)*rnd(1,1));
-    sC=fix(1+(m-2*m_new)*rnd(1,2));
+%     sR=fix(1+(n-2*n_new)*rnd(1,1));
+%     sC=fix(1+(m-2*m_new)*rnd(1,2));
+    sR=1+fix(ls+n*rnd(1,1));
+    sC=1+fix(cs+m*rnd(1,2));
     eR=sR+n_new;
     eC=sC+2*m_new;
     whiteSum = J(eR+1,eC) - J(eR+1,sC) - J(sR,eC) + J(sR,sC);
@@ -19,3 +21,4 @@ M=round (m/20);
     eR=sR+n_new;
     blackSum = J(eR+1,eC) - J(eR+1,sC) - J(sR,eC) + J(sR,sC);
     x(1)=whiteSum-blackSum;
+    
