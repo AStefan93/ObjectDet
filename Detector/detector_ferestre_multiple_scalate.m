@@ -13,7 +13,7 @@ cd(path);
 % end
 load ../features.mat
 % imag = imread('d:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\test_bonsai.jpg');
-imag=imread('d:\DSUsers\uidg6179\01_Miscellaneous\Git\cut_images\00001\00001_930831_fa_a_test.png');
+imag=imread('00001_930831_fa_a_test.png');
 %imag=imread('00001_930831_fa_a.ppm');
 %imag=imread('ReadandDisplayImageExample_01.png');
 n = 346;
@@ -45,7 +45,7 @@ end
 % XX5=haar_5(n,m,II,rnd5);
 % incredere = 0;
 raport=nn/n;
-k=0.4;
+k=0.8;
 XX=[];
 off=0;
 j=1;
@@ -101,11 +101,11 @@ j=1;
 figure()
 imshow (img);
 hold on
-while k<=0.8
-    ls=189;
-    lj=189+fix(n*k)
-    cs=300;
-    cdr=300+fix(m*k)
+while k<=1
+    ls=1;
+    lj=fix(n*k)
+    cs=1;
+    cdr=fix(m*k)
     
     while off==0
         if flag == 0
@@ -113,26 +113,27 @@ while k<=0.8
             off=1;
         end
         if flag==1
-            imgX=img(ls:lj+1,cs:cdr+1);
-            II=integralImage(imgX);
-            n=length(ls:lj+1);
-            m=length(cs:cdr+1);
+            imgX=img(ls:lj,cs:cdr);
+            II=integralImage(img);
+%             II(:,948:959)=0;
+            n_fereastra=length(ls:lj);
+            m_fereastra=length(cs:cdr);
         end
         for i=1:length(featureStrong)
             if featureStrong(i).haarFeature.type == 'X1'
-                XX(i)=haar_11(n,m,II,featureStrong(i).haarFeature.value);
+                XX(i)=haar_11(n_fereastra,m_fereastra,II,featureStrong(i).haarFeature.value,ls,cs);
             end
             if featureStrong(i).haarFeature.type == 'X2'
-                XX(i)=haar_21(n,m,II,featureStrong(i).haarFeature.value);
+                XX(i)=haar_21(n_fereastra,m_fereastra,II,featureStrong(i).haarFeature.value,ls,cs);
             end
             if featureStrong(i).haarFeature.type == 'X3'
-                XX(i)=haar_31(n,m,II,featureStrong(i).haarFeature.value);
+                XX(i)=haar_31(n_fereastra,m_fereastra,II,featureStrong(i).haarFeature.value,ls,cs);
             end
             if featureStrong(i).haarFeature.type == 'X4'
-                XX(i)=haar_41(n,m,II,featureStrong(i).haarFeature.value);
+                XX(i)=haar_41(n_fereastra,m_fereastra,II,featureStrong(i).haarFeature.value,ls,cs);
             end
             if featureStrong(i).haarFeature.type == 'X5'
-                XX(i)=haar_51(n,m,II,featureStrong(i).haarFeature.value);
+                XX(i)=haar_51(n_fereastra,m_fereastra,II,featureStrong(i).haarFeature.value,ls,cs);
             end
         end
         s_alfah=0;
@@ -169,8 +170,8 @@ while k<=0.8
                 end
           
             end
-        n = 346;
-        m = 266;
+%         n = 346;
+%         m = 266;
         j=j+1;
 
     end
