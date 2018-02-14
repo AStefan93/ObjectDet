@@ -37,10 +37,10 @@ for t = 1 : T
     %normalizing weights for each iteration
     sW = sum(W_im);
     W_im = W_im/sW;
-    [Beta(t),featureStrong(t)] = WeightCalc(rnd_all,X_all);
+    [Beta(t),featureStrong(t)] = WeightCalc(rnd_all_struct,X_all);
 end
 
 message_training = 'finished training';
 message_training
 
-save fisier_test
+save('../features','featureStrong');

@@ -1,4 +1,4 @@
-function [Beta_l,featureStrong_l] = WeightCalc(rnd_all,X_all)
+function [Beta_l,featureStrong_l] = WeightCalc(rnd_all_struct,X_all)
 %calculates all the weights of the features from each feature vector
 global nr_poz nr_neg errorV;
 global medieV; %testing purposes
@@ -15,7 +15,7 @@ global W_im;
 %compute beta coefficient for updating weights
 Beta_l = minErr/(1-minErr);
 alpha = log(1/Beta_l);
-featureStrong_l.haarFeature = rnd_all(index,:);
+featureStrong_l.haarFeature = rnd_all_struct(index);
 featureStrong_l.threshold = medieV(index);
 featureStrong_l.weight = alpha;
 
