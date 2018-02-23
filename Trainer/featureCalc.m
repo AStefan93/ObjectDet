@@ -2,7 +2,7 @@ function [X1,X2,X3,X4,X5] = featureCalc(n,m,imgSetVector)
 %n - vertical resolution of image
 %m - vertical resolution of image
 %imgSetVector - image set vector returned by imageSet function
-global rnd1 rnd2 rnd3 rnd4 rnd5 im;
+global rnd1 rnd2 rnd3 rnd4 rnd5;
 
 X1=[];
 X2=[];
@@ -25,10 +25,10 @@ for i=1:length(imgSetVector)
         end
         %workaround for error
         %[n,m] = size(im);
-        img=imresize(im,[n,m]);
+        im = imresize(im,[n,m]);
         %
         %Compute integral Image
-        II=integralImage(img);
+        II=integralImage(im);
         %Compute values from Haar Features
         X=haar_1(n,m,II,rnd1);
         X1=[X1;X];

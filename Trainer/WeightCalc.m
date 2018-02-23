@@ -1,4 +1,4 @@
-function [Beta_l,featureStrong_l] = WeightCalc(rnd_all,X_all)
+function featureStrong_l = WeightCalc(rnd_all,X_all)
 %calculates all the weights of the features from each feature vector
 global nr_poz nr_neg errorV;
 global medieV; %testing purposes

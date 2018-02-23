@@ -12,10 +12,10 @@ if isempty(mypool)
     mypool = parpool();
 end
 %DataBase Folder
-%imgFolderPoz = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\testing\poz\';
-%imgFolderNeg = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\testing\neg\';
-imgFolderPoz = 'd:\DSUsers\uidg6179\01_Miscellaneous\Git\cut_images\';
-imgFolderNeg = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\101_ObjRec\other\';
+imgFolderPoz = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\101_ObjRec\accordion\';
+imgFolderNeg = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\101_ObjRec\airplanes\';
+%imgFolderPoz = 'd:\DSUsers\uidg6179\01_Miscellaneous\Git\cut_images\';
+%imgFolderNeg = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\101_ObjRec\other\';
 %imgFolderPoz = 'f:\Poze\Image Database\faces\colorferet\dvd1\data\images\';
 %imgFolderNeg = 'f:\Poze\Image Database\faces\negatives';
 %Reading all image locations
