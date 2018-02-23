@@ -2,7 +2,7 @@ function [X1,X2,X3,X4,X5] = featureCalc(n,m,imgSetVector)
 %n - vertical resolution of image
 %m - vertical resolution of image
 %imgSetVector - image set vector returned by imageSet function
-global rnd1 rnd2 rnd3 rnd4 rnd5;
+global rnd1 rnd2 rnd3 rnd4 rnd5 im;
 
 X1=[];
 X2=[];

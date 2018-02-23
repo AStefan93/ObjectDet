@@ -65,7 +65,7 @@ X3_neg=[];
 X4_neg=[];
 X5_neg=[];
 
-global W_im T;
+global W_im T n m;
 %number of iterations (T)
 T = 10;
 %initialize weights of images
@@ -77,6 +77,11 @@ scale = 0.1;
 %size of images
 imgInitLocation = imgSetVectorPoz(1).ImageLocation(1);
 img_init = imread(imgInitLocation{1});
+[~, ~, numberOfColorChannels] = size(img_init);
+if numberOfColorChannels > 1
+    % It's a true color RGB image.  We need to convert to gray scale.
+    img_init = rgb2gray(img_init);
+end
 [n,m] = size(img_init);
 if( n > 100 && m > 100)
     img_init = imresize(img_init,scale);
