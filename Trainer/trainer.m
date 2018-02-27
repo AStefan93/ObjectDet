@@ -1,7 +1,7 @@
 
 %initialize variables
 init;
-global W_im rnd_all T n m;
+global W_im rnd_all_struct T n m;
 %compute features from dataset
 %pozitive
 message = 'pozitive'
@@ -28,7 +28,7 @@ X_all = [X1 X2 X3 X4 X5];
 clear X1 X2 X3 X4 X5;
 
 %initialize structs
-featureStrong(1:T)=struct('haarFeature',zeros(1,4),'threshold',0,'weight',0,'ratio',[n m]);
+featureStrong(1:T)=struct('haarFeature',struct('type',0,'value',zeros(1,4)),'threshold',0,'weight',0,'ratio',[n m]);
 
 %featureValue = zeros(T,nr_im_total);
 
@@ -39,7 +39,7 @@ for t = 1 : T
     %normalizing weights for each iteration
     sW = sum(W_im);
     W_im = W_im/sW;
-    featureStrong(t) = WeightCalc(rnd_all,X_all); 
+    featureStrong(t) = WeightCalc(rnd_all_struct,X_all); 
 end
 
 message_training = 'finished training';

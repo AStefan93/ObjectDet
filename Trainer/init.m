@@ -6,14 +6,14 @@ cd ..\..;
 addpath(genpath('ObjectDet'));
 cd(path);
 
-%start parallel pool with default settings
-mypool = gcp('nocreate'); % If no pool, do not create new one.
-if isempty(mypool)
-    mypool = parpool();
-end
+% %start parallel pool with default settings
+% mypool = gcp('nocreate'); % If no pool, do not create new one.
+% if isempty(mypool)
+%     mypool = parpool();
+% end
 %DataBase Folder
 imgFolderPoz = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\101_ObjRec\accordion\';
-imgFolderNeg = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\101_ObjRec\airplanes\';
+imgFolderNeg = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\101_ObjRec\bonsai\';
 %imgFolderPoz = 'd:\DSUsers\uidg6179\01_Miscellaneous\Git\cut_images\';
 %imgFolderNeg = 'd:\DSUsers\uidg6179\01_Miscellaneous\10_Matlab\objrec\101_ObjRec\other\';
 %imgFolderPoz = 'f:\Poze\Image Database\faces\colorferet\dvd1\data\images\';
@@ -45,14 +45,42 @@ nr_im_total = nr_poz + nr_neg;
 global nr_features_total;
 nr_features_total = 180000;
 nr_features_haar = nr_features_total/5;
-global rnd1 rnd2 rnd3 rnd4 rnd5 rnd_all;
-rnd1=rand(nr_features_haar,4);
-rnd2=rand(nr_features_haar,4);
-rnd3=rand(nr_features_haar,4);
-rnd4=rand(nr_features_haar,4);
-rnd5=rand(nr_features_haar,4);
+global rnd1 rnd2 rnd3 rnd4 rnd5 rnd_all_struct;
+rnd1 = rand(nr_features_haar,4);
+rnd2 = rand(nr_features_haar,4);
+rnd3 = rand(nr_features_haar,4);
+rnd4 = rand(nr_features_haar,4);
+rnd5 = rand(nr_features_haar,4);
 %concatenate random vectors
-rnd_all = [rnd1;rnd2;rnd3;rnd4;rnd5];
+rnd1_struct(1:nr_features_haar) = struct('type','X1','value',0);
+rnd2_struct(1:nr_features_haar) = struct('type','X2','value',0);
+rnd3_struct(1:nr_features_haar) = struct('type','X3','value',0);
+rnd4_struct(1:nr_features_haar) = struct('type','X4','value',0);
+rnd5_struct(1:nr_features_haar) = struct('type','X5','value',0);
+
+for i = 1:nr_features_haar
+    %rnd1_struct(i).type = X1;
+    rnd1_struct(i).value = rnd1(i,:);
+end
+for i = 1:nr_features_haar
+    %rnd2_struct(i).type = X2;
+    rnd2_struct(i).value = rnd2(i,:);
+end
+for i = 1:nr_features_haar
+    %rnd3_struct(i).type = X3;
+    rnd3_struct(i).value = rnd3(i,:);
+end
+for i = 1:nr_features_haar
+    %rnd4_struct(i).type = X4;
+    rnd4_struct(i).value = rnd4(i,:);
+end
+for i = 1:nr_features_haar
+    %rnd5_struct(i).type = X5;
+    rnd5_struct(i).value = rnd5(i,:);
+end
+
+rnd_all_struct = [rnd1_struct rnd2_struct rnd3_struct rnd4_struct rnd5_struct];
+clear rnd1_struct rnd2_struct rnd3_struct rnd4_struct rnd5_struct;
 
 X1_poz=[];
 X2_poz=[];

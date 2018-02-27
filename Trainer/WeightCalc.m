@@ -15,7 +15,9 @@ global W_im n m;
 %compute beta coefficient for updating weights
 Beta_l = minErr/(1-minErr);
 alpha = log(1/Beta_l);
-featureStrong_l.haarFeature = rnd_all(index,:);
+featureStrong_l.haarFeature.type = rnd_all(index).type;
+featureStrong_l.haarFeature.value = rnd_all(index).value(1,:);
+%featureStrong_l.haarFeature = rnd_all(index);
 featureStrong_l.threshold = medieV(index);
 featureStrong_l.weight = alpha;
 featureStrong_l.ratio = [n m];
